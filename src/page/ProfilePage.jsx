@@ -53,9 +53,9 @@ export default function ProfilePage() {
         try {
             let endpoint = "";
 
-            if (user.role === "customer") endpoint = "http://localhost:5000/updateCustomerProfile";
-            else if (user.role === "admin") endpoint = "http://localhost:5000/updateAdminProfile";
-            else if (user.role === "employee") endpoint = "http://localhost:5000/updateEmployeeProfile";
+            if (user.role === "customer") endpoint = "https://my-game-store.onrender.com/updateCustomerProfile";
+            else if (user.role === "admin") endpoint = "https://my-game-store.onrender.com/updateAdminProfile";
+            else if (user.role === "employee") endpoint = "https://my-game-store.onrender.com/updateEmployeeProfile";
             else return;
 
             const payload = { email: user.email, ...fieldValues };
@@ -77,9 +77,9 @@ export default function ProfilePage() {
 
         try {
             const [resOrders, resReviews, resWishlists] = await Promise.all([
-                axios.post("http://localhost:5000/myOrders", { email: user.email }),
-                axios.post("http://localhost:5000/myReviews", { email: user.email }),
-                axios.post("http://localhost:5000/getUserWishlists", { email: user.email })
+                axios.post("https://my-game-store.onrender.com/myOrders", { email: user.email }),
+                axios.post("https://my-game-store.onrender.com/myReviews", { email: user.email }),
+                axios.post("https://my-game-store.onrender.com/getUserWishlists", { email: user.email })
             ]);
             if(resOrders.data.result[0].status =="true"){
                 setOrders(resOrders.data.result);
@@ -105,9 +105,9 @@ export default function ProfilePage() {
         try {
             let endpoint = "";
 
-            if (user.role === "customer") endpoint = "http://localhost:5000/customerProfile";
-            else if (user.role === "admin") endpoint = "http://localhost:5000/adminProfile";
-            else if (user.role === "employee") endpoint = "http://localhost:5000/employeeProfile";
+            if (user.role === "customer") endpoint = "https://my-game-store.onrender.com/customerProfile";
+            else if (user.role === "admin") endpoint = "https://my-game-store.onrender.com/adminProfile";
+            else if (user.role === "employee") endpoint = "https://my-game-store.onrender.com/employeeProfile";
             else return;
 
             const res = await axios.post(endpoint, { email: user.email });
@@ -139,8 +139,8 @@ export default function ProfilePage() {
     }, [fetchProfile]);
 
     const fetchAllData = useCallback(async () => {
-        const storePromise = axios.get("http://localhost:5000/stores");
-        const employeePromise = axios.get("http://localhost:5000/employees");
+        const storePromise = axios.get("https://my-game-store.onrender.com/stores");
+        const employeePromise = axios.get("https://my-game-store.onrender.com/employees");
 
         try {
             const [storesRes, employeesRes] = await Promise.all([storePromise, employeePromise]);

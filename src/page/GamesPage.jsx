@@ -51,7 +51,7 @@ function GamesPage({ cart, setCart, storeData, setStoreData, platformData, setPl
     useEffect(() => {
         const fetchStores = async () => {
             try {
-            const res = await axios.get("http://localhost:5000/stores");
+            const res = await axios.get("https://my-game-store.onrender.com/stores");
             setStores(res.data.data.map(store => store.store_name));
             } catch (err) {
             console.log(err);
@@ -59,7 +59,7 @@ function GamesPage({ cart, setCart, storeData, setStoreData, platformData, setPl
         };
         const fetchPlatforms = async () => {
             try {
-            const res = await axios.get("http://localhost:5000/platforms");
+            const res = await axios.get("https://my-game-store.onrender.com/platforms");
             setPlatforms(res.data.data.map(platform => platform.platform));
             } catch (err) {
             console.log(err);
@@ -74,7 +74,7 @@ function GamesPage({ cart, setCart, storeData, setStoreData, platformData, setPl
     useEffect(() => {
         const fetchGames = async () => {
             try {
-                const res = await axios.post("http://localhost:5000/game", 
+                const res = await axios.post("https://my-game-store.onrender.com/game", 
                     { selectedFiltersSQL, storeData, platformData }
                 );
                 setGames(res.data.data);

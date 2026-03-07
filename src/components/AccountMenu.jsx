@@ -32,7 +32,7 @@ export default function AccountMenu() {
   const handleDeleteAccount = async () => {
     handleClose(); 
     try {
-      const response = await fetch("http://localhost:5000/deleteAccount", {
+      const response = await fetch("https://my-game-store.onrender.com/deleteAccount", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: user.email }) 

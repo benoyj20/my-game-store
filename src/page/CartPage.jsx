@@ -33,7 +33,7 @@ function CartPage({ cart, setCart, storeData, platformData }) {
         const quantity = cart.map(() => 1).join(',');
 
         try {
-            const response = await fetch("http://localhost:5000/submit_order", {
+            const response = await fetch("https://my-game-store.onrender.com/submit_order", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ 

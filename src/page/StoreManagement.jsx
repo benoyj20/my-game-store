@@ -36,7 +36,7 @@ function StoreManagement() {
     const [deleteFormErrors, setDeleteFormErrors] = useState({});
 
     const fetchData = useCallback(async () => {
-        const storePromise = axios.get("http://localhost:5000/stores");
+        const storePromise = axios.get("https://my-game-store.onrender.com/stores");
 
         try {
             const [storesRes] = await Promise.all([
@@ -126,7 +126,7 @@ function StoreManagement() {
     
         if (createFormValidate()) {
             try {
-                const response = await fetch("http://localhost:5000/submitStore", {
+                const response = await fetch("https://my-game-store.onrender.com/submitStore", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(createFormData)
@@ -156,7 +156,7 @@ function StoreManagement() {
         setUpdateFormNotification({ message: '', type: '' });
         if (updateFormValidate()) {
             try {
-                const response = await fetch("http://localhost:5000/updateStore", {
+                const response = await fetch("https://my-game-store.onrender.com/updateStore", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(updateFormData)
@@ -189,7 +189,7 @@ function StoreManagement() {
             return;
         }
         try {
-            const response = await fetch("http://localhost:5000/deleteStore", {
+            const response = await fetch("https://my-game-store.onrender.com/deleteStore", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(deleteFormData)

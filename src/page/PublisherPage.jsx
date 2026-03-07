@@ -15,7 +15,7 @@ export default function PublisherPage() {
 
     const fetchPublishers = useCallback(async () => {
         try {
-            const res = await axios.post("http://localhost:5000/publishers", {});
+            const res = await axios.post("https://my-game-store.onrender.com/publishers", {});
             console.log(res.data.data);
             setPublishers(res.data.data);
         } catch (err) {

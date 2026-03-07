@@ -33,7 +33,7 @@ function LoginPage() {
     if (values.email && values.password) {
 
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("https://my-game-store.onrender.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values) 

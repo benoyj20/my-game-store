@@ -42,7 +42,7 @@ function RegistrationPage() {
       values.contact_number && values.apartment_no && values.street && values.city && values.state) {
 
     try {
-      const response = await fetch("http://localhost:5000/register", {
+      const response = await fetch("https://my-game-store.onrender.com/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values) 

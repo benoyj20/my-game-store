@@ -36,8 +36,8 @@ function WishlistPage() {
   const fetchData = useCallback(async () => {
     try {
         if(!user || !user.email) return;
-      const gamePromise = axios.post('http://localhost:5000/getGameTitles', {});
-      const wishlistPromise = axios.post('http://localhost:5000/getWishlistNames', {email: user.email});
+      const gamePromise = axios.post('https://my-game-store.onrender.com/getGameTitles', {});
+      const wishlistPromise = axios.post('https://my-game-store.onrender.com/getWishlistNames', {email: user.email});
 
       const [gamesRes, wishlistsRes] = await Promise.all([gamePromise, wishlistPromise]);
 
@@ -93,7 +93,7 @@ function WishlistPage() {
         email: user?.email
       };
 
-      const res = await axios.post('http://localhost:5000/submitWishlist', payload);
+      const res = await axios.post('https://my-game-store.onrender.com/submitWishlist', payload);
       const data = res?.data;
 
       if ((data && data.success === 'true') || data?.success === true) {
@@ -139,7 +139,7 @@ function WishlistPage() {
 
     try {
       const payload = { wishlistName: deleteFormData.wishlistName };
-      const res = await axios.post('http://localhost:5000/deleteWishlist', payload);
+      const res = await axios.post('https://my-game-store.onrender.com/deleteWishlist', payload);
       const data = res?.data;
 
       if ((data && data.success === 'true') || data?.success === true) {

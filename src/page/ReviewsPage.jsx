@@ -39,7 +39,7 @@ export default function ReviewsPage() {
 
     const fetchReviews = useCallback(async () => {
         try {
-            const res = await axios.post("http://localhost:5000/reviews", 
+            const res = await axios.post("https://my-game-store.onrender.com/reviews", 
                 { selectedFiltersSQL }
             );
             setReviews(res.data.data);
@@ -55,7 +55,7 @@ export default function ReviewsPage() {
     useEffect(() => {
         const fetchGames = async () => {
             try {
-                const res = await axios.post("http://localhost:5000/getGameTitles", 
+                const res = await axios.post("https://my-game-store.onrender.com/getGameTitles", 
                     { }
                 );
                 setGames(res.data.data);
@@ -127,7 +127,7 @@ export default function ReviewsPage() {
         }
         if (validate()) {
             try {
-                const response = await fetch("http://localhost:5000/submitReview", {
+                const response = await fetch("https://my-game-store.onrender.com/submitReview", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(formData) 

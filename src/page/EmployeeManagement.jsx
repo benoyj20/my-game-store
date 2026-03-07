@@ -41,8 +41,8 @@ function EmployeeManagement() {
     const [deleteFormErrors, setDeleteFormErrors] = useState({});
 
     const fetchData = useCallback(async () => {
-        const employeePromise = axios.get("http://localhost:5000/employees", {});
-        const storePromise = axios.get("http://localhost:5000/stores");
+        const employeePromise = axios.get("https://my-game-store.onrender.com/employees", {});
+        const storePromise = axios.get("https://my-game-store.onrender.com/stores");
 
         try {
             const [employeesRes, storesRes] = await Promise.all([
@@ -141,7 +141,7 @@ function EmployeeManagement() {
     
         if (createFormValidate()) {
             try {
-                const response = await fetch("http://localhost:5000/submitEmployee", {
+                const response = await fetch("https://my-game-store.onrender.com/submitEmployee", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(createFormData)
@@ -171,7 +171,7 @@ function EmployeeManagement() {
         setUpdateFormNotification({ message: '', type: '' });
         if (updateFormValidate()) {
             try {
-                const response = await fetch("http://localhost:5000/updateEmployee", {
+                const response = await fetch("https://my-game-store.onrender.com/updateEmployee", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(updateFormData)
@@ -204,7 +204,7 @@ function EmployeeManagement() {
             return;
         }
         try {
-            const response = await fetch("http://localhost:5000/deleteEmployee", {
+            const response = await fetch("https://my-game-store.onrender.com/deleteEmployee", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(deleteFormData)

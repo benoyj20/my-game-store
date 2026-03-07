@@ -67,9 +67,9 @@ function UpdateGameInventory() {
     }, [user]);
 
     const fetchData = useCallback(async () => {
-        const gamePromise = axios.post("http://localhost:5000/getGameTitles", {});
-        const publisherPromise = axios.post("http://localhost:5000/publishers", {});
-        const genrePromise = axios.post("http://localhost:5000/genres", {});
+        const gamePromise = axios.post("https://my-game-store.onrender.com/getGameTitles", {});
+        const publisherPromise = axios.post("https://my-game-store.onrender.com/publishers", {});
+        const genrePromise = axios.post("https://my-game-store.onrender.com/genres", {});
 
         try {
             const [gamesRes, publishersRes, genresRes] = await Promise.all([
@@ -206,7 +206,7 @@ function UpdateGameInventory() {
         if (createFormValidate()) {
             try {
                 const payload = { ...createFormData, genre: selectedCreateFormGenres };
-                const response = await fetch("http://localhost:5000/submitGame", {
+                const response = await fetch("https://my-game-store.onrender.com/submitGame", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)
@@ -242,7 +242,7 @@ function UpdateGameInventory() {
         if (updateFormValidate()) {
             try {
                 const payload = { ...updateFormData, genre: selectedUpdateFormGenres };
-                const response = await fetch("http://localhost:5000/updateGame", {
+                const response = await fetch("https://my-game-store.onrender.com/updateGame", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload)
@@ -276,7 +276,7 @@ function UpdateGameInventory() {
             return;
         }
         try {
-            const response = await fetch("http://localhost:5000/deleteGame", {
+            const response = await fetch("https://my-game-store.onrender.com/deleteGame", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(deleteFormData)
@@ -305,7 +305,7 @@ function UpdateGameInventory() {
             return;
         }
         try {
-            const response = await fetch("http://localhost:5000/updateGameInventory", {
+            const response = await fetch("https://my-game-store.onrender.com/updateGameInventory", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: user.email, ...updateInventoryFormData })

@@ -36,7 +36,7 @@ function PublisherManagement() {
 
     const fetchData = useCallback(async () => {
         try {
-            const publishersRes = await axios.post("http://localhost:5000/publishers");
+            const publishersRes = await axios.post("https://my-game-store.onrender.com/publishers");
             console.log("Fetched publishers:", publishersRes.data.data);
             setPublishers(publishersRes.data.data.map(publisher => publisher.publisher_name));
         } catch (err) {
@@ -105,15 +105,15 @@ function PublisherManagement() {
         let data = {};
         if (formType === 'create') {
             if (!validateForm(createFormData, 'create')) return setCreateNotification({ message: "Fix form errors.", type: 'error' });
-            url = "http://localhost:5000/submitPublisher"; data = createFormData;
+            url = "https://my-game-store.onrender.com/submitPublisher"; data = createFormData;
         }
         if (formType === 'update') {
             if (!validateForm(updateFormData, 'update')) return setUpdateNotification({ message: "Fix form errors.", type: 'error' });
-            url = "http://localhost:5000/updatePublisher"; data = updateFormData;
+            url = "https://my-game-store.onrender.com/updatePublisher"; data = updateFormData;
         }
         if (formType === 'delete') {
             if (!validateForm(deleteFormData, 'delete')) return setDeleteNotification({ message: "Select a publisher.", type: 'error' });
-            url = "http://localhost:5000/deletePublisher"; data = deleteFormData;
+            url = "https://my-game-store.onrender.com/deletePublisher"; data = deleteFormData;
         }
 
         try {
