@@ -1,0 +1,89 @@
+.updateGame-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateGame-page .form-container {
+  width: 420px;
+  background-color: white;
+  margin: auto;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
+              0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  padding: 10px;
+  position: relative;
+  margin: 30px 20px 20px 37px;
+}
+
+.updateGame-page .register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.updateGame-page .success-message {
+  font-family: "Roboto", sans-serif;
+  background-color: #3f89f8;
+  padding: 15px;
+  color: white;
+  text-align: center;
+}
+
+.updateGame-page .form-field {
+  margin: 10px 0 10px 0;
+  padding: 15px;
+  font-size: 16px;
+  border: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+.updateGame-page input {
+  background: #f2f2f2;
+}
+
+.updateGame-page .error {
+  border-style: solid;
+  border: 2px solid #ffa4a4;
+}
+
+.updateGame-page button {
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.updateGame-page button:disabled {
+  cursor: default;
+}
+
+.updateGame-page.title {
+  font-family: 'Playfair Display', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  position: relative;
+  margin: 100px 20px 20px 30px;
+}
+
+.gameSection {
+  display: flex;
+  gap: 24px;
+  position: relative;
+}
+
+.updateGame-page-font {
+  font-family: 'Playfair Display', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.subfont {
+  color: white;
+}
+
+.gameSection {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}

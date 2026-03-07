@@ -1,0 +1,12 @@
+.publishers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-left: 100px; 
+}
+
+.publisher-card-wrapper {
+    flex: 0 1 calc(50% - 10px);
+    box-sizing: border-box;
+}

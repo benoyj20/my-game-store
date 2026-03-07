@@ -1,0 +1,21 @@
+.profile-items-card {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  margin: 25px auto auto 0px;
+  width: 800px;
+}
+
+.profile-page-subTitle-spacing {
+  position: relative;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 50px 20px 20px 15px;
+}
+
+.addedItemSection {
+  display: flex;
+  gap: 24px;
+  position: relative;
+  margin: 0px 20px 20px 175px;
+}

@@ -1,0 +1,91 @@
+body{
+  background: linear-gradient(to right, #f4791f, #659999);
+  overflow-x: hidden; 
+}
+
+/* Header container */
+.header {
+  display: flex;
+  justify-content: space-between; /* space between title and nav */
+  padding: 10px 50px;            /* some space around header */
+  color: rgb(71, 6, 248);;
+}
+
+.title {
+  font-family: 'Playfair Display', Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-top: 0px;
+}
+
+/* Logo */
+.websiteHeader {
+  display: flex;
+  gap : 30px;
+  margin-top: 10px;
+}
+
+/* Navigation container */
+.nav {
+  display: flex;
+  gap: 30px; /* spacing between nav items */
+  margin-top: 5px;
+}
+
+/* Navigation items */
+.navigationTitle
+{
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.homeLogo {
+  width: 30%;
+  height: auto;
+  position: absolute;
+  margin: 90px 110px 0px 1000px;
+  transform: rotate(20deg);
+}
+
+.retroText {
+    color: rgb(71, 6, 248);
+    display: inline-block;
+    font-family: "Bungee Spice", sans-serif;
+    font-size: 50px;
+    font-weight: 600;
+    letter-spacing: -.015em;
+    line-height: 1.05;
+    width: 100%;
+    position: absolute;
+    margin: 50px -150px 100px 50px;
+    background-color: #659999;
+}
+
+.welcomeTextHeader {
+    position: absolute;
+    margin: 50px -150px 100px 50px;
+}
+
+.welcomeText {
+    color: rgb(2, 7, 51);
+    font-family: "Michroma", sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: .007em;
+    line-height: 1.1428571429;
+    max-width: 750px;
+    padding-bottom: 6px;
+    position: absolute;
+    margin: 120px -150px 100px 50px;
+}
+
+.subHeading{
+    font-size: 25px;
+    color: white;
+    font-family: "Inter Tight", sans-serif;
+    font-weight: 00;
+    letter-spacing: 0.02em;
+    line-height: 1.25;
+    padding: 0;
+}
