@@ -8,8 +8,9 @@ const app = express();
 const saltRounds = 10;
 
 app.use(cors({
-  origin: "https://my-game-store.onrender.com"
-}));app.use(express.json());
+  origin: "https://my-game-store-1.onrender.com"
+}));
+app.use(express.json());
 
 const db = mysql.createConnection({
   host: process.env.DB_HOST,
