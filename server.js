@@ -751,9 +751,6 @@ app.post("/updateGameInventory", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log(" Server running on port 5000");
-});
 
 app.post("/submit_order", async (req, res) => {
     const { email, gameTitle, quantity, storeData, platformData } = req.body;
@@ -843,4 +840,16 @@ app.post("/getUserWishlists", async (req, res) => {
       console.error("Query error:", err);
       res.status(500).json({ error: "Something went wrong" });
     }
+});
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+app.get("/", (req, res) => {
+  db.query("SELECT 1", (err) => {
+    if (err) return res.status(500).send("Server is live but database is disconnected.");
+    res.send("Game Store Backend is live and connected to Aiven MySQL!");
+  });
 });
