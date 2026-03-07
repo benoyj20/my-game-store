@@ -59,47 +59,49 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
-  const email = req.body.email;
-  const inputPassword = req.body.password;
+  const { email, password: inputPassword } = req.body;
 
   try {
-    const [procResult] = await db
-      .promise()
-      .query("CALL get_user_password(?)", [email]);
+    // 1. Get the stored hash from the DB
+    const [procResult] = await db.promise().query("CALL get_user_password(?)", [email]);
+    const firstResultSet = procResult[0];
 
-    const firstResultSet = procResult[0];  
-
-    if (firstResultSet.length === 0 || firstResultSet[0].status === "false") {
-      return res.json({ success: firstResultSet[0].status, message: firstResultSet[0].message });
+    // Check if email exists
+    if (!firstResultSet || firstResultSet.length === 0 || firstResultSet[0].status === "false") {
+      return res.status(404).json({ 
+        success: "false", 
+        message: firstResultSet?.[0]?.message || "User not found" 
+      });
     }
 
     const storedHashedPassword = firstResultSet[0].password;
 
-    bcrypt.compare(inputPassword, storedHashedPassword, async (err, result) => {
-      if (err) {
-        console.error("Error comparing passwords:", err);
-        return res.json({ success: false, message: "Internal server error" });
-      }
+    // 2. Use the PROMISE version of bcrypt.compare (no callback)
+    const isMatch = await bcrypt.compare(inputPassword, storedHashedPassword);
 
-      if (!result) {
-        return res.json({ success: false, message: "Incorrect password" });
-      }
+    if (!isMatch) {
+      return res.status(401).json({ success: "false", message: "Incorrect password" });
+    }
 
-      const [loginResult] = await db
-        .promise()
-        .query("CALL login_user(?, ?)", [email, storedHashedPassword]);
+    // 3. Finalize login via stored procedure
+    const [loginResult] = await db.promise().query("CALL login_user(?, ?)", [email, storedHashedPassword]);
+    const loginRow = loginResult[0][0];
 
-      const loginRow = loginResult[0][0];
-
-      return res.json({
-        success: loginRow.status,
-        message: loginRow.message,
-        role: loginRow.role_type,
-        firstName: loginRow.first_name,
-      });
+    // 4. Send success response
+    return res.json({
+      success: loginRow.status,
+      message: loginRow.message,
+      role: loginRow.role_type,
+      firstName: loginRow.first_name,
     });
+
   } catch (err) {
-    console.error(err);
+    console.error("CRITICAL LOGIN ERROR:", err);
+    // CRUCIAL: Always send a response so React knows it failed
+    return res.status(500).json({ 
+      success: "false", 
+      message: "Internal server error. Please check backend logs." 
+    });
   }
 });
 
