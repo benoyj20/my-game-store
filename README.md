@@ -1,6 +1,6 @@
-# 🎮 Game Application System
+# 🎮 Game Store Web Application
 
-A **full-stack web application** for managing a **digital game store**, featuring secure authentication, role-based access control, and real-time inventory management. The platform allows customers to browse games, place orders, and leave reviews while enabling employees and admins to manage inventory and system operations efficiently.
+A **full-stack web application** for managing a **digital game store**, featuring secure authentication, role-based access control, and real-time inventory management. The platform allows customers to browse games, place orders, and leave reviews while enabling employees and admins to manage inventory and system operations efficiently. During authentication, the system verifies the user's credentials. It then checks the user's role in the database (**Customer, Employee, or Admin**) and dynamically loads the corresponding interface with the appropriate permissions and functionality.
 
 ---
 
@@ -37,9 +37,9 @@ https://my-game-store-1.onrender.com/registration
 ## ✨ Key Features
 
 ### 🔐 Role-Based Access Control
-- **Customers:** Browse games, manage wishlist, place orders, and submit reviews.
-- **Employees:** Manage game inventory and update product information.
-- **Admins:** Full system control including pricing, stock updates, and management.
+- **Customers:** Register and login,select a store, view games, filter games by categories, add games to their cart, create wishlists, and leave reviews.
+- **Employees:** manage game inventory and publishers.
+- **Admins:** Full system control including employee management and store management.
 
 ### 🔑 Secure Authentication
 - Passwords securely hashed using **Bcrypt**
@@ -72,7 +72,6 @@ my-react-app/
 ├── src/                 # React frontend components
 │
 ├── server.js            # Node.js / Express backend API
-├── backup.sql           # Database schema + stored procedures
 │
 ├── package.json         # Project dependencies
 ├── vite.config.js       # Frontend build configuration
@@ -86,11 +85,7 @@ my-react-app/
 ### 1️⃣ Database Setup
 
 1. Create a **MySQL instance on Aiven Cloud**.
-2. Import the database schema using:
-
-```sql
-backup.sql
-```
+2. Import the database schema
 
 3. Ensure the following stored procedures are created:
 - `get_user_password`
@@ -127,24 +122,12 @@ npm install
 node server.js
 ```
 
-Backend runs on:
-
-```
-http://localhost:5000
-```
-
 ---
 
 ### 5️⃣ Run the Frontend
 
 ```bash
 npm run dev
-```
-
-Frontend runs on:
-
-```
-http://localhost:5173
 ```
 
 ---
