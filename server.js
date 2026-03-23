@@ -12,7 +12,7 @@ app.use(cors({
 }));
 app.use(express.json());
 
-const pool = mysql.createPool({
+const db = mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -25,8 +25,6 @@ const pool = mysql.createPool({
   enableKeepAlive: true,
   keepAliveInitialDelay: 10000
 });
-
-const db = pool.promise();
 
 app.post("/register", async (req, res) => {
   const firstName = req.body.firstName;
