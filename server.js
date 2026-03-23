@@ -28,11 +28,6 @@ const pool = mysql.createPool({
 
 const db = pool.promise();
 
-db.connect(err => {
-  if (err) console.log("MySQL connection error:", err);
-  else console.log("MySQL connected");
-});
-
 app.post("/register", async (req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
